@@ -1,0 +1,22 @@
+# Entornos virtuales de Python
+venv/
+env/
+.venv/
+
+# Archivos compilados de Python
+__pycache__/
+*.pyc
+
+# Variables de entorno (¡Nunca subas tus contraseñas a GitHub!)
+.env
+
+# Node.js (Para cuando hagas MS4 y MS1/MS3)
+node_modules/
+npm-debug.log
+
+# Carpetas de IDEs (VS Code, IntelliJ)
+.vscode/
+.idea/
+
+# macOS
+.DS_Store

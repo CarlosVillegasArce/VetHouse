@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float, Date, ForeignKey
+from sqlalchemy import Column, Integer, String, Float, Date, ForeignKey , Boolean
 from sqlalchemy.orm import relationship
 from .database import Base
 
@@ -12,7 +12,7 @@ class Dueno(Base):
     telefono = Column(String(20))
     correo = Column(String(100), unique=True)
     direccion = Column(String(255))
-
+    activo = Column(Boolean, default=True) # <-- NUEVO: Soft Delete
     # Relación
     mascotas = relationship("Mascota", back_populates="dueno")
 
@@ -29,6 +29,7 @@ class Mascota(Base):
     peso_actual = Column(Float)
     estado_reproductivo = Column(String(50))
     observaciones = Column(String(255))
+    activo = Column(Boolean, default=True) # <-- NUEVO: Soft Delete
 
     # Relación
     dueno = relationship("Dueno", back_populates="mascotas")
