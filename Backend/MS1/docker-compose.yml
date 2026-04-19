@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  # Contenedor de la API (Tu código en Python)
+  api_ms1:
+    build: .
+    ports:
+      - "3001:3001"
+    environment:
+      # El host "db_ms1" es resuelto automáticamente por Docker
+      - DATABASE_URL=mysql+pymysql://user_ms1:password_ms1@db_ms1:3306/veterinaria_ms1
+    depends_on:
+      db_ms1:
+        condition: service_healthy
+
+  # Contenedor de la Base de Datos (MySQL)
+  db_ms1:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: veterinaria_ms1
+      MYSQL_USER: user_ms1
+      MYSQL_PASSWORD: password_ms1
+    ports:
+      - "3307:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
