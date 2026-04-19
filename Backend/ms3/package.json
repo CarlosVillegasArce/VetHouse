@@ -1,0 +1,20 @@
+{
+  "name": "ms3",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.19.14",
+    "dotenv": "^17.4.2",
+    "hono": "^4.12.14",
+    "mongoose": "^9.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.39",
+    "tsx": "^4.7.1",
+    "typescript": "^5.8.3"
+  }
+}
